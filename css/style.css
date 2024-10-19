@@ -1,12 +1,14 @@
 html {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+ }
 
 body {
   font-family: "Raleway", sans-serif;
   background: #fff;
   font-size: 16px;
   line-height: 1.6;
-  color: #b8b8b8; }
+  color: #b8b8b8;
+  overflow-x: hidden; }
 
 a {
   -webkit-transition: .3s all ease;
@@ -137,7 +139,7 @@ h1, h2, h3, h4, h5,
   .ftco-cover .ftco-heading {
     font-size: 75px;
     line-height: 1.34;
-    color: #fff; }
+    color: #ffb300; }
     @media screen and (max-width: 768px) {
       .ftco-cover .ftco-heading {
         font-size: 37px;
