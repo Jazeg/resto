@@ -22,19 +22,21 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
 
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <a class="navbar-brand" href="index.html">Riconcito Piurano</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
+        
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
@@ -47,8 +49,27 @@
             <li class="nav-item"><a href="#section-contact" class="nav-link">Contacto</a></li>
           </ul>
         </div>
+
+        <div class="cart-details">
+          <span class="close-btn">&times;</span>
+          <h4>Carrito de Compras</h4>
+          <ul id="cart-items">
+              <!-- Aquí se añadirán los productos -->
+          </ul>
+          <p class="subtotal">Subtotal: S/. <span id="subtotal">0.00</span></p>
+      </div>
       </div>
     </nav>
+    <div class="cont_compra">
+      
+    </div>
+
+
+    <div class="carrito">
+      <a href="#" class="cart"><span></span></a>
+
+      
+    </div>
     <!-- END nav -->
 
     <section class="ftco-cover" style="background-image: url(images/banner-ceviche2.webp);" id="section-home">
@@ -108,7 +129,7 @@
                     <h5 class="mt-0 h4">Ceviche Clásico</h5>
                     <p class="mb-4">Trozos de pescado fresco marinados en jugo de limón, cebolla morada, ají limo y cilantro. Servido con choclo, camote y cancha serrana.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -121,7 +142,7 @@
                     <h5 class="mt-0 h4">Ceviche Mixto</h5>
                     <p class="mb-4">Deliciosa mezcla de pescado fresco y mariscos marinado en limón, ají limo y especias, acompañado de choclo, camote y cancha.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -133,7 +154,7 @@
                     <h5><del>S/ 45.00</del> <span class="text-primary">S/ 35.00</span></h5>
                     <h5 class="mt-0 h4">Ceviche de Conchas Negras</h5>
                     <p class="mb-4">Conchas negras frescas del norte de Perú, marinadas con limón, ají, cebolla y cilantro.</p>
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -145,7 +166,7 @@
                     <h5><del>S/ 42.00</del> <span class="text-primary">S/ 38.00</span></h5>
                     <h5 class="mt-0 h4">Ceviche de Camarones</h5>
                     <p class="mb-4">Camarones frescos marinados en limón y especias, acompañado de cebolla morada, ají y cilantro. Servido con choclo y camote.</p>
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -158,7 +179,7 @@
                     <h5 class="mt-0 h4">Ceviche Tropical</h5>
                     <p class="mb-4">Pescado fresco marinado en una mezcla de jugo de limón y frutas tropicales como el mango y maracuyá, con un toque de ají y cilantro.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -171,7 +192,7 @@
                     <h5 class="mt-0 h4">Ceviche Nikkei</h5>
                     <p class="mb-4">Una deliciosa fusión de sabores peruanos y japoneses. Pescado fresco marinado con limón y salsa de soya, acompañado de ajonjolí y cilantro.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -184,7 +205,7 @@
                     <h5 class="mt-0 h4">Ceviche de Trucha</h5>
                     <p class="mb-4">Trucha fresca de las alturas peruanas, marinada en jugo de limón, ají amarillo y cilantro. Acompañado de choclo y cancha.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -197,7 +218,7 @@
                     <h5 class="mt-0 h4">Ceviche al Rocoto</h5>
                     <p class="mb-4">Ceviche de pescado fresco con un toque picante gracias al rocoto, marinado en limón y sazonado con cebolla morada y cilantro.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -210,7 +231,7 @@
                     <h5 class="mt-0 h4">Leche de Tigre</h5>
                     <p class="mb-4">El concentrado del ceviche servido en un vaso, acompañado de trozos de pescado, cebolla y ají limo. Ideal para recargar energías.</p>
 
-                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Ordenar ahora</a></p>
+                    <button class="btn btn-sm btn-warning ml-3">Agregar al carrito</button>
                   </div>
                 </div>
               </div>
@@ -751,6 +772,8 @@
     <script src="js/google-map.js"></script>
 
     <script src="js/main.js"></script>
+
+    <script src="js/carrito.js"></script>
 
     
   </body>
