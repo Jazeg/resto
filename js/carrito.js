@@ -109,11 +109,22 @@ function mostrarCarrito() {
 
         const li = document.createElement("li");
         li.innerHTML = `
-            ${producto.nombre} - S/. ${producto.precio} 
-            <div class="quantity-controls">
-                <button class="quantity-btn decrease" data-index="${index}">-</button>
-                <span>${producto.cantidad}</span>
-                <button class="quantity-btn increase" data-index="${index}">+</button>
+            <div class="aaa">
+                <img src="${producto.imagen}" alt="IMG" width="90" height="70" align="left">
+            </div>
+            <div class="nom_prod">
+                ${producto.nombre}
+            </div>
+            <div class="conttten">
+                <div>
+                S/. ${producto.precio} 
+                </div>
+                
+                <div class="quantity-controls ">
+                    <button class="quantity-btn decrease" data-index="${index}">-</button>
+                    <span>${producto.cantidad}</span>
+                    <button class="quantity-btn increase" data-index="${index}">+</button>
+                </div>
             </div>
         `;
         cartItems.appendChild(li);

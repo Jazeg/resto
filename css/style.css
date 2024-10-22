@@ -8,7 +8,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: #b8b8b8;
-  overflow-x: hidden; }
+  overflow-x: hidden; } 
 
 a {
   -webkit-transition: .3s all ease;
@@ -57,10 +57,7 @@ a.cart {
   position: absolute;
 
   display: block;
-  background: #ffab00 url(http://images.vfl.ru/ii/1484930184/14435803/15757225.png
-
-  
-) center no-repeat;
+  background: #ffab00 center no-repeat;
   background-size: 36px;
   box-shadow: 0 3px 6px rgba(97, 97, 97 0.16), 0 3px 6px rgba(97, 97, 97 0.23);
   -moz-box-shadow: 0 3px 6px rgba(97, 97, 97 0.16), 0 3px 6px rgba(97, 97, 97 0.23);
@@ -70,7 +67,6 @@ a.cart {
 a.cart > span {
   width: 24px;
   height: 24px;
-  font-size: 16px;
   color: #fff;
   line-height: 24px;
   position: absolute;
@@ -89,9 +85,9 @@ a.cart > span {
   left: 0;
   margin: auto;
   background: #ffab00;
-  box-shadow: 0 3px 6px rgba(255, 171, 0, 0.16), 0 3px 6px rgba(255, 171, 0, 0.23);
-  -moz-box-shadow: 0 3px 6px rgba(255, 171, 0, 0.16), 0 3px 6px rgba(255, 171, 0, 0.23);
-  -webkit-box-shadow: 0 3px 6px rgba(255, 171, 0, 0.16), 0 3px 6px rgba(255, 171, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(255, 171, 0, 0.46), 0 3px 6px rgba(255, 171, 0, 0.43);
+  -moz-box-shadow: 0 3px 6px rgba(255, 171, 0, 0.46), 0 3px 6px rgba(255, 171, 0, 0.43);
+  -webkit-box-shadow: 0 3px 6px rgba(255, 171, 0, 0.46), 0 3px 6px rgba(255, 171, 0, 0.43);
 }
 
 a.cart > span.counter {
@@ -115,15 +111,49 @@ a.cart > span.counter {
 
 
 
+.nom_prod{
+  
+  margin-left: 10px;
+  color: #525252;
+}
+.conttten{
+  text-align: center;
+}
+
+.conttten div{
+  padding: 5px 0px;
+}
 
 
+.precio_a{
+  width: 50px;
+}
 
 
+.aaa img{
+  padding-right: 7px;
+}
 
 
 .cart {
   cursor: pointer;
+  
 }
+
+.cart i{
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  font-size: 45px;
+  display: block;
+  margin: auto;
+  top: 0;
+  right: 24px;
+  bottom: 0;
+  left: 0;
+  line-height: 24px;
+}
+
 .cont_compra{
   position: fixed;
   width: 100%;
@@ -132,7 +162,6 @@ a.cart > span.counter {
 }
 .cart-details {
   /* Estilos existentes */
-
   position: absolute;
   top: 56px;
   right: 0;
@@ -145,7 +174,7 @@ a.cart > span.counter {
   visibility: hidden;
   transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-  z-index: 1000;
+  z-index: 3;
 }
 
 .cart-details.open {
@@ -166,6 +195,7 @@ a.cart > span.counter {
 }
 
 .cart-details h4 {
+  font-family: "Raleway", sans-serif; 
   padding: 10px;
   margin: 0;
   background-color: #f8f8f8;
@@ -173,21 +203,26 @@ a.cart > span.counter {
   text-align: center;
 }
 
+
+
 .cart-details ul {
   list-style-type: none;
   margin: 0;
   padding: 10px;
   max-height: 200px;
   overflow-y: auto;
+  
 }
 
 .cart-details li {
   display: flex;
   justify-content: space-between;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0px 0px;
   border-bottom: 1px solid #ddd;
-  padding: 5px 0;
+  padding: 15px 7px;
+  
 }
 
 .quantity-controls {
