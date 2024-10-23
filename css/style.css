@@ -45,8 +45,8 @@ h1, h2, h3, h4, h5,
   
 }
 a.cart {
-  width: 72px;
-  height: 72px;
+  width: 62px;
+  height: 62px;
   -moz-border-radius: 36px;
   -webkit-border-radius: 36px;
   border-radius: 36px;
@@ -111,6 +111,12 @@ a.cart > span.counter {
 
 
 
+
+
+.btn-outline-warning{
+  background-color: rgba(70, 70, 70, 0.501);
+}
+
 .nom_prod{
   
   margin-left: 10px;
@@ -141,10 +147,11 @@ a.cart > span.counter {
 }
 
 .cart i{
+  color: #fff;
   width: 24px;
   height: 24px;
   position: absolute;
-  font-size: 45px;
+  font-size: 35px;
   display: block;
   margin: auto;
   top: 0;
