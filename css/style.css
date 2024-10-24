@@ -174,7 +174,6 @@ a.cart > span.counter {
   right: 0;
   width: 370px;
   background: white;
-  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   opacity: 0;
@@ -182,6 +181,11 @@ a.cart > span.counter {
   transform: translateY(-20px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   z-index: 3;
+}
+
+.cart-details>.btn-sm{
+  font-size: 50px;
+  
 }
 
 .cart-details.open {
@@ -196,7 +200,7 @@ a.cart > span.counter {
   right: 23px;
   font-size: 50px;
   cursor: pointer;
-  color: #333;
+  color: #ffab00;
   background: none;
   border: none;
 }
@@ -206,7 +210,7 @@ a.cart > span.counter {
   padding: 10px;
   margin: 0;
   background-color: #f8f8f8;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ffab00;
   text-align: center;
 }
 
@@ -227,7 +231,7 @@ a.cart > span.counter {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   align-items: center;
   margin-bottom: 0px 0px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ffab00;
   padding: 15px 7px;
   
 }
@@ -250,10 +254,47 @@ a.cart > span.counter {
 .subtotal {
   padding: 10px;
   font-weight: bold;
+  border:1px #ffab00 solid;
   background-color: #f8f8f8;
+  color: #ffab00;
   text-align: center;
 }
+/* limon */
+.boton_reser{
+  border: 1px solid rgb(195, 255, 0);
+}
 
+
+.btnpaagar{
+  width: 100%;
+  height: 56px;
+  /* border: 1px solid rgb(195, 255, 0);  */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: none;
+  color: #f8f8f8;
+  background-color: #ffc107;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  &:hover {
+    background-color: #f9b62f;
+    /* color: #f9b62f; */
+    color: rgb(42, 29, 29);
+    border: #ffc107 1px solid;
+  }
+  }
+/* .btnpaagar {
+  font-size: 20px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: #0069d9;
+  }
+} */
 
 /* hola------------------------------------------------ */
 
@@ -384,7 +425,7 @@ a.cart > span.counter {
   @media screen and (max-width: 768px) {
     .ftco-cover .btn {
       width: 100% !important;
-      border: 1px solid red; } }
+      border: 1px solid rgb(195, 255, 0); } }
   .ftco-cover a {
     position: relative;
     color: #fff; }

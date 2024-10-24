@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,7 +9,64 @@
     <link rel="stylesheet" href="../css/procederpago.css"> <!-- Estilos personalizados -->
     <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 </head>
+
 <body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-VGHCBZG439");
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Selecciona el botón de confirmar pedido
+            const botonConfirmar = document.getElementById("confirmar-pedido");
+
+            // Añade el listener para ejecutar finalizarCompra al hacer clic
+            botonConfirmar.addEventListener("click", (e) => {
+                e.preventDefault(); // Evita el comportamiento por defecto del botón
+                finalizarCompra();
+            });
+        });
+
+        function finalizarCompra() {
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            if (carrito.length === 0) {
+                alert("El carrito está vacío.");
+                return;
+            }
+
+            const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
+            let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+
+            // Envía el evento 'purchase' a Google Analytics
+            gtag('event', 'purchase', {
+                "transaction_id": transactionId,
+                "affiliation": "Mi Tienda de Comidas",
+                "value": totalCompra,
+                "currency": "PEN", // Moneda en soles
+                "items": carrito.map(producto => ({
+                    "id": producto.nombre,
+                    "name": producto.nombre,
+                    "price": producto.precio,
+                    "quantity": producto.cantidad
+                }))
+            });
+
+            // Aquí podrías vaciar el carrito si la compra es exitosa
+            localStorage.removeItem("carrito");
+            alert("Compra finalizada exitosamente.");
+        }
+
+
+    </script>
     <div class="container mt-5">
         <!-- Barra de Progreso de Pasos -->
         <div class="progress-container mb-4">
@@ -88,4 +146,5 @@
         </div>
       </footer>
 </body>
+
 </html>
