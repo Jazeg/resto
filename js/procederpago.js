@@ -31,6 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("paymentForm");
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Evitar la recarga del formulario
-        window.location.href = "completarpago.html"; // Redirigir a la página de éxito
+        window.location.href = "../pages/completarpago.html"; // Redirigir a la página de éxito
     });
 });
