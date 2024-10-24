@@ -9,6 +9,58 @@
     <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 </head>
 <body>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-VGHCBZG439");
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Selecciona el botón de confirmar pedido
+            const botonConfirmar = document.getElementById("confirmar-pedido");
+
+            // Añade el listener para ejecutar finalizarCompra al hacer clic
+            botonConfirmar.addEventListener("click", (e) => {
+                finalizarCompra();
+            });
+        });
+
+        function finalizarCompra() {
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            if (carrito.length === 0) {
+                console.log("El carrito está vacío.");
+                return;
+            }
+
+            const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
+            let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+
+            // Envía el evento 'purchase' a Google Analytics
+            gtag('event', 'purchase', {
+                "transaction_id": transactionId,
+                "affiliation": "Mi Tienda de Comidas",
+                "value": totalCompra,
+                "currency": "PEN", // Moneda en soles
+                "items": carrito.map(producto => ({
+                    "id": producto.nombre,
+                    "name": producto.nombre,
+                    "price": producto.precio,
+                    "quantity": producto.cantidad
+                }))
+            });
+        }
+
+
+    </script>
     <div class="container mt-5">
         <!-- Barra de Progreso de Pasos -->
         <div class="progress-container mb-4">
@@ -65,7 +117,7 @@
                     <hr>
                     <p class="mb-1"><strong>Total a Pagar: S/. <span id="total">0.00</span></strong></p>
                 </div>
-                <button type="button" class="btn btn-primary btn-block mt-4">Pagar Ahora</button>
+                <button type="button" class="btn btn-primary btn-block mt-4" id="confirmar-pedido">Pagar Ahora</button>
             </div>
         </div>
     </div>

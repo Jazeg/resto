@@ -14,59 +14,7 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"></script>
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-
-        gtag("config", "G-VGHCBZG439");
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Selecciona el botón de confirmar pedido
-            const botonConfirmar = document.getElementById("confirmar-pedido");
-
-            // Añade el listener para ejecutar finalizarCompra al hacer clic
-            botonConfirmar.addEventListener("click", (e) => {
-                finalizarCompra();
-            });
-        });
-
-        function finalizarCompra() {
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-            if (carrito.length === 0) {
-                alert("El carrito está vacío.");
-                return;
-            }
-
-            const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-            let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
-
-            // Envía el evento 'purchase' a Google Analytics
-            gtag('event', 'purchase', {
-                "transaction_id": transactionId,
-                "affiliation": "Mi Tienda de Comidas",
-                "value": totalCompra,
-                "currency": "PEN", // Moneda en soles
-                "items": carrito.map(producto => ({
-                    "id": producto.nombre,
-                    "name": producto.nombre,
-                    "price": producto.precio,
-                    "quantity": producto.cantidad
-                }))
-            });
-<<<<<<< HEAD
-
-          
-=======
->>>>>>> refs/remotes/origin/main
-        }
-
-
-    </script>
+    
     <div class="container mt-5">
         <!-- Barra de Progreso de Pasos -->
         <div class="progress-container mb-4">
@@ -111,7 +59,7 @@
                     <p class="mb-1">Contacto: <strong>987 654 321</strong></p>
                     <p class="mb-1">Total a Pagar: <strong>S/. 99.99</strong></p>                    
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4" id="confirmar-pedido">Confirmar Pedido</button>
+                <button type="submit" class="btn btn-primary btn-block mt-4" >Confirmar Pedido</button>
                 <a href="detallecarrito.html" class="btn btn-secondary btn-block mt-2">Ver Carrito</a>
             </div>
             </form>
