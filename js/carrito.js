@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     // Selecciona todos los botones "Agregar al carrito" y "Ordenar ahora"
     const botonesAgregar = document.querySelectorAll(".btn-warning, .btn-primary");
@@ -55,7 +54,20 @@ function agregarAlCarrito(nombre, precio, imagen) {
     // Guarda el carrito actualizado en el LocalStorage
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
+    // Envía el evento 'add_to_cart' a Google Analytics
+    gtag('event', 'add_to_cart', {
+        "currency": "PEN", // Moneda en soles
+        "value": producto.precio,
+        "items": [{
+            "id": producto.nombre,  // Puedes usar otro identificador si tienes
+            "name": producto.nombre,
+            "price": producto.precio,
+            "quantity": producto.cantidad
+        }]
+    });
+
     // alert(`${nombre} ha sido agregado al carrito.`);
+    mostrarCarrito();
 }
 
 function actualizarContadorCarrito() {
@@ -69,8 +81,6 @@ function actualizarContadorCarrito() {
     $("a.cart > span").addClass("counter");
     $("a.cart > span.counter").text(cantidad);
 }
-
-
 
 //--------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------
@@ -161,6 +171,34 @@ function modificarCantidad(index, cambio) {
     mostrarCarrito(); // Actualiza el carrito visualmente
 }
 
+// Función para simular la compra y enviar el evento 'purchase'
+function finalizarCompra() {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    // Genera un ID de transacción único (puedes personalizarlo según tu sistema)
+    const transactionId = `T${Date.now()}`;
+
+    let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+
+    // Envía el evento 'purchase' a Google Analytics
+    gtag('event', 'purchase', {
+        "transaction_id": transactionId,
+        "affiliation": "Tienda de Comidas",
+        "value": totalCompra,
+        "currency": "PEN", // Moneda en soles
+        "items": carrito.map(producto => ({
+            "id": producto.nombre,  // ID de producto (puedes cambiarlo)
+            "name": producto.nombre,
+            "price": producto.precio,
+            "quantity": producto.cantidad
+        }))
+    });
+
+    // Aquí iría la lógica que finaliza la compra (vaciar carrito, etc.)
+    localStorage.removeItem("carrito");
+    mostrarCarrito();
+}
+
 function agregarAlCarrito(nombre, precio, imagen) {
     const producto = {
         nombre,
@@ -179,6 +217,18 @@ function agregarAlCarrito(nombre, precio, imagen) {
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Envía el evento 'add_to_cart' a Google Analytics
+    gtag('event', 'add_to_cart', {
+        "currency": "PEN", // Moneda en soles
+        "value": producto.precio,
+        "items": [{
+            "id": producto.nombre,
+            "name": producto.nombre,
+            "price": producto.precio,
+            "quantity": producto.cantidad
+        }]
+    });
 
     // alert(`${nombre} ha sido agregado al carrito.`);
     mostrarCarrito();
