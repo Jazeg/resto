@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Proceder al Pago</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/procederpago.css"> <!-- Estilos personalizados -->
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Barra de Progreso de Pasos -->
+        <div class="progress-container mb-4">
+            <ul class="progressbar">
+                <li class="completed">Vistas</li>
+                <li class="completed">Adjuntar</li>
+                <li class="completed">Precios</li>
+                <li class="active">Detalles</li>
+                <li>Completar Pago</li>
+                <li>Pago Exitoso</li>
+            </ul>
+        </div>
+
+        <!-- Resumen del Pedido -->
+        <h2>Resumen de tu Pedido</h2>
+        <p>Por favor, revisa los detalles de tu pedido antes de proceder al pago.</p>
+
+        <div class="row">
+            <!-- Formulario de Detalles -->
+            <div class="col-md-8">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="direccion">Dirección de Entrega</label>
+                        <input type="text" class="form-control" id="direccion" placeholder="123 Calle, Ciudad, País">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Número de Contacto</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="XXX-XXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha-nacimiento">
+                    </div>
+                    <div class="form-group">
+                        <label>Género</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Masculino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Femenino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="other" value="other">
+                            <label class="form-check-label" for="other">Prefiero no decir</label>
+                        </div>
+                    </div>
+
+                    <!-- Instrucciones para el Chef -->
+                    <div class="form-group">
+                        <label>¿Tienes alguna preferencia alimentaria?</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="dietary" id="yes-dietary" value="yes">
+                            <label class="form-check-label" for="yes-dietary">Sí</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="dietary" id="no-dietary" value="no" checked>
+                            <label class="form-check-label" for="no-dietary">No, gracias</label>
+                        </div>
+                        <textarea class="form-control mt-3" id="dietary-instructions" rows="3" placeholder="Escribe tus instrucciones..." style="display: none;"></textarea>
+                    </div>
+
+                    <!-- Botones de acción -->
+                    <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
+                    <a href="detallecarrito.html" class="btn btn-secondary">Ver Carrito</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/procederpago.js"></script>
+</body>
+</html>

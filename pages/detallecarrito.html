@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Detalle del Carrito</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/detallecarrito.css"> <!-- Enlace a nuestro CSS personalizado -->
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Columna de productos -->
+            <div class="col-md-8">
+                <h2>Tu Carrito</h2>
+                <div class="cart-items-container">
+                    <ul id="detalle-carrito" class="list-group mb-3">
+                        <!-- Aquí se mostrarán los productos -->
+                    </ul>
+                </div>
+            </div>
+            <!-- Columna de resumen del pedido -->
+            <div class="col-md-4">
+                <h4>Resumen del Pedido</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Subtotal</span>
+                        <strong>S/. <span id="subtotal">0.00</span></strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Impuestos (18%)</span>
+                        <strong>S/. <span id="impuestos">0.00</span></strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong>S/. <span id="total">0.00</span></strong>
+                    </li>
+                </ul>
+                <a href="../index.html" class="btn btn-secondary btn-block mb-3">Continuar comprando</a>
+                <a href="procederpago.html" class="btn btn-primary btn-block">Proceder al pago</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/carrito.js"></script>
+    <script>
+        // Función para calcular el total con impuestos (18%)
+        function calcularImpuestos(subtotal) {
+            return subtotal * 0.18;
+        }
+
+        // Función para mostrar los productos del carrito en la página de detalles
+        function mostrarDetalleCarrito() {
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            const detalleCarrito = document.getElementById("detalle-carrito");
+            const subtotalEl = document.getElementById("subtotal");
+            const impuestosEl = document.getElementById("impuestos");
+            const totalEl = document.getElementById("total");
+
+            detalleCarrito.innerHTML = ""; // Limpia la lista de productos
+            let subtotal = 0;
+
+            carrito.forEach((producto, index) => {
+                subtotal += producto.precio * producto.cantidad;
+
+                const li = document.createElement("li");
+                li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+                li.innerHTML = `
+                    <div class="media">
+                        <img class="mr-3" src="${producto.imagen}" alt="${producto.nombre}" width="80" height="80">
+                        <div class="media-body">
+                            <h5 class="mt-0">${producto.nombre}</h5>
+                            <p class="text-muted">Cantidad: 
+                                <button class="btn btn-sm btn-light decrease" data-index="${index}">-</button>
+                                ${producto.cantidad}
+                                <button class="btn btn-sm btn-light increase" data-index="${index}">+</button>
+                            </p>
+                            <p class="text-muted">Precio: S/. ${producto.precio.toFixed(2)}</p>
+                        </div>
+                    </div>
+                    <span class="text-muted">S/. ${(producto.precio * producto.cantidad).toFixed(2)}</span>
+                `;
+                detalleCarrito.appendChild(li);
+            });
+
+            // Calcular impuestos y total
+            const impuestos = calcularImpuestos(subtotal);
+            const total = subtotal + impuestos;
+
+            // Mostrar los valores en el resumen del pedido
+            subtotalEl.textContent = subtotal.toFixed(2);
+            impuestosEl.textContent = impuestos.toFixed(2);
+            totalEl.textContent = total.toFixed(2);
+        }
+
+        // Función para modificar la cantidad
+        function modificarCantidad(index, cambio) {
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            if (carrito[index].cantidad + cambio > 0) {
+                carrito[index].cantidad += cambio;
+            } else {
+                carrito.splice(index, 1); // Elimina el producto si la cantidad llega a 0
+            }
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            mostrarDetalleCarrito();
+        }
+
+        // Evento de aumentar/disminuir cantidad
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("increase")) {
+                modificarCantidad(e.target.dataset.index, 1);
+            } else if (e.target.classList.contains("decrease")) {
+                modificarCantidad(e.target.dataset.index, -1);
+            }
+        });
+
+        // Llama a la función para mostrar los productos del carrito
+        mostrarDetalleCarrito();
+    </script>
+
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Quick Links -->
+        <div class="col-md-6">
+          <h5>Enlaces Rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos de Servicio</a></li>
+          </ul>
+        </div>
+        <!-- Contact Information -->
+        <div class="col-md-6 text-md-right">
+          <h5>Contáctanos</h5>
+          <p>Email: <a href="mailto:contacto@rinconcitopiurano.com">contacto@rinconcitopiurano.com</a></p>
+          <p>Teléfono: <a href="tel:+51971391910">+51 987 654 321</a></p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-center">
+          <p class="text-muted">&copy; 2024 Rinconcito Piurano. Todos los derechos reservados. by Zeltux</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
