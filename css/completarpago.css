@@ -1,3 +1,4 @@
+/* Asegurarse de que el footer esté al final de la página */
 html, body {
     height: 100%;
     margin: 0;
@@ -5,6 +6,7 @@ html, body {
     flex-direction: column;
     font-family: 'Raleway', sans-serif;
 }
+
 /* Barra de Progreso */
 .progressbar {
     display: flex;
@@ -74,33 +76,48 @@ body {
 }
 
 h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
-.order-summary {
-    background-color: #f8f9fa;
+.payment-details, .order-summary {
+    background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-textarea {
-    resize: none;
+.payment-details h4, .order-summary h4 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
 }
 
-.btn-primary {
+.form-group {
+    margin-bottom: 15px;
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 12px;
     background-color: #007bff;
     border-color: #007bff;
-    font-size: 1.1rem;
-    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    width: 100%;
 }
 
-.btn-secondary {
-    font-size: 1.1rem;
-    padding: 10px;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Footer */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* footer */
+/* Footer Styles */
 .container {
     flex: 1;
 }

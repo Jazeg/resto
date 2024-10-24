@@ -6,6 +6,7 @@
     <title>Detalle del Carrito</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/detallecarrito.css"> <!-- Enlace a nuestro CSS personalizado -->
+    <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 </head>
 <body>
     <div class="container mt-5">
@@ -28,7 +29,7 @@
                         <strong>S/. <span id="subtotal">0.00</span></strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Impuestos (18%)</span>
+                        <span>Costo delivery</span>
                         <strong>S/. <span id="impuestos">0.00</span></strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
@@ -44,9 +45,8 @@
 
     <script src="../js/carrito.js"></script>
     <script>
-        // Función para calcular el total con impuestos (18%)
         function calcularImpuestos(subtotal) {
-            return subtotal * 0.18;
+            return subtotal * 0.00;
         }
 
         // Función para mostrar los productos del carrito en la página de detalles
@@ -57,7 +57,7 @@
             const impuestosEl = document.getElementById("impuestos");
             const totalEl = document.getElementById("total");
 
-            detalleCarrito.innerHTML = ""; // Limpia la lista de productos
+            detalleCarrito.innerHTML = ""; 
             let subtotal = 0;
 
             carrito.forEach((producto, index) => {
@@ -83,29 +83,27 @@
                 detalleCarrito.appendChild(li);
             });
 
-            // Calcular impuestos y total
+            
             const impuestos = calcularImpuestos(subtotal);
-            const total = subtotal + impuestos;
+            const total = subtotal;
 
-            // Mostrar los valores en el resumen del pedido
+            
             subtotalEl.textContent = subtotal.toFixed(2);
             impuestosEl.textContent = impuestos.toFixed(2);
             totalEl.textContent = total.toFixed(2);
         }
 
-        // Función para modificar la cantidad
         function modificarCantidad(index, cambio) {
             let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             if (carrito[index].cantidad + cambio > 0) {
                 carrito[index].cantidad += cambio;
             } else {
-                carrito.splice(index, 1); // Elimina el producto si la cantidad llega a 0
+                carrito.splice(index, 1); 
             }
             localStorage.setItem("carrito", JSON.stringify(carrito));
             mostrarDetalleCarrito();
         }
 
-        // Evento de aumentar/disminuir cantidad
         document.addEventListener("click", (e) => {
             if (e.target.classList.contains("increase")) {
                 modificarCantidad(e.target.dataset.index, 1);
@@ -114,7 +112,6 @@
             }
         });
 
-        // Llama a la función para mostrar los productos del carrito
         mostrarDetalleCarrito();
     </script>
 

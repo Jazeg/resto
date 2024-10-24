@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Completar Pago</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/completarpago.css"> <!-- Estilos personalizados -->
+    <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Barra de Progreso de Pasos -->
+        <div class="progress-container mb-4">
+            <ul class="progressbar">
+                <li class="completed">Vistas</li>
+                <li class="completed">Adjuntar</li>
+                <li class="completed">Precios</li>
+                <li class="completed">Detalles</li>
+                <li class="active">Completar Pago</li>
+                <li>Pago Exitoso</li>
+            </ul>
+        </div>
+
+        <h2 class="mb-4 text-center">Pago Seguro</h2>
+
+        <div class="row justify-content-center">
+            <!-- Columna de Detalles de Pago -->
+            <div class="col-md-6">
+                <div class="payment-details p-4 shadow-sm rounded">
+                    <h4 class="mb-4"><i class="fas fa-credit-card"></i> Detalles de Pago</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="numeroTarjeta">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="numeroTarjeta" placeholder="1234 5678 9012 3456" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombreTarjeta">Nombre en la Tarjeta</label>
+                            <input type="text" class="form-control" id="nombreTarjeta" placeholder="Homero Simpson" disabled>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="fechaExpiracion">Fecha de Expiración</label>
+                                <input type="text" class="form-control" id="fechaExpiracion" placeholder="12/25" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="cvv">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="321" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoTarjeta">Tipo de Tarjeta</label>
+                            <input type="text" class="form-control" id="tipoTarjeta" placeholder="Visa" disabled>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Columna de Resumen del Pedido -->
+            <div class="col-md-4">
+                <div class="order-summary p-4 shadow-sm rounded">
+                    <h4 class="mb-4"><i class="fas fa-shopping-cart"></i> Resumen de la Compra</h4>
+                    <p class="mb-1"><strong>Sub Total: S/. <span id="subtotal">0.00</span></strong></p>
+                    <p class="mb-2">Envío: <strong>Gratis</strong></p>
+                    <hr>
+                    <p class="mb-1"><strong>Total a Pagar: S/. <span id="total">0.00</span></strong></p>
+                </div>
+                <button type="button" class="btn btn-primary btn-block mt-4">Pagar Ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../js/completarpago.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <!-- Quick Links -->
+            <div class="col-md-6">
+              <h5>Enlaces Rápidos</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servicio</a></li>
+              </ul>
+            </div>
+            <!-- Contact Information -->
+            <div class="col-md-6 text-md-right">
+              <h5>Contáctanos</h5>
+              <p>Email: <a href="mailto:contacto@rinconcitopiurano.com">contacto@rinconcitopiurano.com</a></p>
+              <p>Teléfono: <a href="tel:+51971391910">+51 987 654 321</a></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col text-center">
+              <p class="text-muted">&copy; 2024 Rinconcito Piurano. Todos los derechos reservados. by Zeltux</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

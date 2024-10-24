@@ -6,6 +6,7 @@
     <title>Proceder al Pago</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/procederpago.css"> <!-- Estilos personalizados -->
+    <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 </head>
 <body>
     <div class="container mt-5">
@@ -23,66 +24,68 @@
 
         <!-- Resumen del Pedido -->
         <h2>Resumen de tu Pedido</h2>
-        <p>Por favor, revisa los detalles de tu pedido antes de proceder al pago.</p>
+        <p class="lead">Por favor, revisa los detalles de tu pedido antes de proceder al pago.</p>
 
         <div class="row">
             <!-- Formulario de Detalles -->
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <form id="paymentForm">
                     <div class="form-group">
                         <label for="direccion">Dirección de Entrega</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="123 Calle, Ciudad, País">
+                        <input type="text" class="form-control" id="direccion" placeholder="Colegio Técnico de Magia Metropolitana de Tokio 728">
                     </div>
                     <div class="form-group">
                         <label for="telefono">Número de Contacto</label>
-                        <input type="tel" class="form-control" id="telefono" placeholder="XXX-XXX-XXXX">
+                        <input type="tel" class="form-control" id="telefono" placeholder="987 654 321">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Nombre Completo</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
-                    </div>
-                    <div class="form-group">
-                        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fecha-nacimiento">
-                    </div>
-                    <div class="form-group">
-                        <label>Género</label><br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                            <label class="form-check-label" for="male">Masculino</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                            <label class="form-check-label" for="female">Femenino</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                            <label class="form-check-label" for="other">Prefiero no decir</label>
-                        </div>
+                        <input type="text" class="form-control" id="nombre" placeholder="Dr. Heinz Doofenshmirtz">
                     </div>
 
-                    <!-- Instrucciones para el Chef -->
-                    <div class="form-group">
-                        <label>¿Tienes alguna preferencia alimentaria?</label><br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="dietary" id="yes-dietary" value="yes">
-                            <label class="form-check-label" for="yes-dietary">Sí</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="dietary" id="no-dietary" value="no" checked>
-                            <label class="form-check-label" for="no-dietary">No, gracias</label>
-                        </div>
-                        <textarea class="form-control mt-3" id="dietary-instructions" rows="3" placeholder="Escribe tus instrucciones..." style="display: none;"></textarea>
-                    </div>
-
-                    <!-- Botones de acción -->
-                    <button type="submit" class="btn btn-primary">Confirmar Pedido</button>
-                    <a href="detallecarrito.html" class="btn btn-secondary">Ver Carrito</a>
-                </form>
             </div>
+
+            <!-- Resumen del Pedido y Botones -->
+            <div class="col-md-6">
+                <div class="order-summary p-4">
+                    <h4>Resumen del Pedido</h4>
+                    <p class="mb-1">Dirección: <strong>Colegio Técnico de Magia Metropolitana de Tokio 728</strong></p>
+                    <p class="mb-1">Contacto: <strong>987 654 321</strong></p>
+                    <p class="mb-1">Total a Pagar: <strong>S/. 99.99</strong></p>                    
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-4">Confirmar Pedido</button>
+                <a href="detallecarrito.html" class="btn btn-secondary btn-block mt-2">Ver Carrito</a>
+            </div>
+            </form>
         </div>
     </div>
-
     <script src="../js/procederpago.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <!-- Quick Links -->
+            <div class="col-md-6">
+              <h5>Enlaces Rápidos</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servicio</a></li>
+              </ul>
+            </div>
+            <!-- Contact Information -->
+            <div class="col-md-6 text-md-right">
+              <h5>Contáctanos</h5>
+              <p>Email: <a href="mailto:contacto@rinconcitopiurano.com">contacto@rinconcitopiurano.com</a></p>
+              <p>Teléfono: <a href="tel:+51971391910">+51 987 654 321</a></p>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col text-center">
+              <p class="text-muted">&copy; 2024 Rinconcito Piurano. Todos los derechos reservados. by Zeltux</p>
+            </div>
+          </div>
+        </div>
+      </footer>
 </body>
 </html>
