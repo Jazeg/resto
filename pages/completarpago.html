@@ -151,7 +151,7 @@
           <button
             type="button"
             class="btn btn-primary btn-block mt-4"
-            id="confirmar-pedido" onclick="finalizarCompra()"
+            id="Pagar" onclick="finalizarCompra()"
           >
             Pagar Ahora
           </button>
@@ -219,14 +219,8 @@
                 transaction_id: transactionId, // Aquí podrías generar un ID único para la transacción
                 currency: "PEN", // Cambia la moneda si es necesario
                 value: totalValue, // Valor total del carrito
-                items: carrito.map((producto) => ({
-                  item_id: producto.nombre, // ID o nombre del plato
-                  item_name: producto.nombre,
-                  price: producto.precio,
-                  quantity: producto.cantidad,
-                })),
+                
               });
-
               // Enviar un evento individual por cada plato
               carrito.forEach((producto) => {
                 gtag("event", "plato_mas_comprado", {
