@@ -20,7 +20,18 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-VGHCBZG439");
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Selecciona el botón de confirmar pedido
@@ -49,11 +60,12 @@
                 "affiliation": "Mi Tienda de Comidas",
                 "value": totalCompra,
                 "currency": "PEN", // Moneda en soles
-                "id": producto.nombre,
-                "name": producto.nombre,
-                "price": producto.precio,
-                "quantity": producto.cantidad
-                
+                "items": carrito.map(producto => ({
+                    "id": producto.nombre,
+                    "name": producto.nombre,
+                    "price": producto.precio,
+                    "quantity": producto.cantidad
+                }))
             });
         }
 
