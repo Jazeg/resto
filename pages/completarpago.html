@@ -27,19 +27,19 @@
   </head>
   <!-- Google tag (gtag.js) -->
   <script
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"
-></script>
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"
+  ></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-  gtag("config", "G-VGHCBZG439");
-</script>
+    gtag("config", "G-VGHCBZG439");
+  </script>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -51,8 +51,6 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    
 
     <div class="container mt-5">
       <!-- Barra de Progreso de Pasos -->
@@ -151,7 +149,7 @@
           <button
             type="button"
             class="btn btn-primary btn-block mt-4"
-            id="Pagar" onclick="finalizarCompra()"
+            id="confirmar-pedido"
           >
             Pagar Ahora
           </button>
@@ -214,21 +212,16 @@
                 0
               );
 
-              // Enviar el evento de compra
               gtag("event", "purchase", {
-                transaction_id: transactionId, // Aquí podrías generar un ID único para la transacción
+                transaction_id: transactionId, // Genera un ID único para la transacción
                 currency: "PEN", // Cambia la moneda si es necesario
-                value: totalValue, // Valor total del carrito
-                
-              });
-              // Enviar un evento individual por cada plato
-              carrito.forEach((producto) => {
-                gtag("event", "plato_mas_comprado", {
-                  event_category: "Productos",
-                  event_label: producto.nombre,
-                  value: producto.cantidad,
-                  price: producto.precio,
-                });
+                value: totalValue, // Valor total del carrito (suma de los precios de los productos)
+                items: carrito.map((producto) => ({
+                  item_id: producto.nombre, // ID o nombre del plato
+                  item_name: producto.nombre, // Nombre del plato
+                  price: producto.precio, // Precio del plato
+                  quantity: producto.cantidad, // Cantidad comprada
+                })),
               });
 
               console.log(
@@ -242,63 +235,6 @@
           console.error('Elemento con id "confirmar-pedido" no encontrado.');
         }
       });
-
-
-
-      // Función para simular la compra y enviar el evento 'purchase'
-function finalizarCompra() {
-
-    const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-        if (confirmarPedidoBtn) {
-          confirmarPedidoBtn.addEventListener("click", function () {
-            // Obtiene el carrito del LocalStorage
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-            if (carrito.length > 0) {
-              let totalValue = carrito.reduce(
-                (total, producto) =>
-                  total + producto.precio * producto.cantidad,
-                0
-              );
-
-              // Enviar el evento de compra
-              gtag("event", "purchase", {
-                transaction_id: transactionId, // Aquí podrías generar un ID único para la transacción
-                currency: "PEN", // Cambia la moneda si es necesario
-                value: totalValue, // Valor total del carrito
-                items: carrito.map((producto) => ({
-                  item_id: producto.nombre, // ID o nombre del plato
-                  item_name: producto.nombre,
-                  price: producto.precio,
-                  quantity: producto.cantidad,
-                })),
-              });
-
-              // Enviar un evento individual por cada plato
-              carrito.forEach((producto) => {
-                gtag("event", "plato_mas_comprado", {
-                  event_category: "Productos",
-                  event_label: producto.nombre,
-                  value: producto.cantidad,
-                  price: producto.precio,
-                });
-              });
-
-              console.log(
-                "¡Compra registrada y eventos enviados a Google Analytics!"
-              );
-            } else {
-              console.log("El carrito está vacío.");
-            }
-          });
-        } else {
-          console.error('Elemento con id "confirmar-pedido" no encontrado.');
-        }
-
-    // Aquí iría la lógica que finaliza la compra (vaciar carrito, etc.)
-    localStorage.removeItem("carrito");
-    mostrarCarrito();
-}
     </script>
   </body>
 </html>
