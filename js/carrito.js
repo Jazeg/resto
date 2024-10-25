@@ -266,3 +266,18 @@ document.getElementById("reservaciones").addEventListener("click", function() {
         'value': 1
     });
 });
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     const detallesCompraBtn = document.getElementById("detalles_compra");
+//     if (detallesCompraBtn) {
+//         detallesCompraBtn.addEventListener("click", function() {
+//             gtag('event', 'click', {
+//                 'event_category': 'Botones',
+//                 'event_label': 'ir a detalles pedido',
+//                 'value': 1
+//             });
+//         });
+//     } else {
+//         console.error('Elemento con id "detalles_compra" no encontrado.');
+//     }
+// });
