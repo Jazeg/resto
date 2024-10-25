@@ -171,72 +171,34 @@ function modificarCantidad(index, cambio) {
 }
 
 // Función para simular la compra y enviar el evento 'purchase'
-function finalizarCompra() {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+// function finalizarCompra() {
+//     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    // Genera un ID de transacción único (puedes personalizarlo según tu sistema)
-    const transactionId = `T${Date.now()}`;
+//     // Genera un ID de transacción único (puedes personalizarlo según tu sistema)
+//     const transactionId = `T${Date.now()}`;
 
-    let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+//     let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
 
-    // Envía el evento 'purchase' a Google Analytics
-    gtag('event', 'purchase', {
-        "transaction_id": transactionId,
-        "affiliation": "Tienda de Comidas",
-        "value": totalCompra,
-        "currency": "PEN", // Moneda en soles
-        "items": carrito.map(producto => ({
-            "id": producto.nombre,  // ID de producto (puedes cambiarlo)
-            "name": producto.nombre,
-            "price": producto.precio,
-            "quantity": producto.cantidad
-        }))
-    });
+//     // Envía el evento 'purchase' a Google Analytics
+//     gtag('event', 'purchase', {
+//         "transaction_id": transactionId,
+//         "affiliation": "Tienda de Comidas",
+//         "value": totalCompra,
+//         "currency": "PEN", // Moneda en soles
+//         "items": carrito.map(producto => ({
+//             "id": producto.nombre,  // ID de producto (puedes cambiarlo)
+//             "name": producto.nombre,
+//             "price": producto.precio,
+//             "quantity": producto.cantidad
+//         }))
+//     });
 
-    // Aquí iría la lógica que finaliza la compra (vaciar carrito, etc.)
-    localStorage.removeItem("carrito");
-    mostrarCarrito();
-}
+//     // Aquí iría la lógica que finaliza la compra (vaciar carrito, etc.)
+//     localStorage.removeItem("carrito");
+//     mostrarCarrito();
+// }
 
-function agregarAlCarrito(nombre, precio, imagen) {
-    const producto = {
-        nombre,
-        precio: parseFloat(precio),
-        imagen,
-        cantidad: 1
-    };
 
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const index = carrito.findIndex(item => item.nombre === producto.nombre);
-
-    if (index !== -1) {
-        carrito[index].cantidad += 1;
-    } else {
-        carrito.push(producto);
-    }
-
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-
-    // Envía el evento 'add_to_cart' a Google Analytics
-    gtag('event', 'add_to_cart', {
-        "currency": "PEN", // Moneda en soles
-        "value": producto.precio,
-        "id": producto.nombre,
-        "name": producto.nombre,
-        "price": producto.precio,
-        "quantity": producto.cantidad
-        
-    });
-
-    // alert(`${nombre} ha sido agregado al carrito.`);
-    mostrarCarrito();
-}
-
-function actualizarContadorCarrito() {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const cantidad = carrito.reduce((total, producto) => total + producto.cantidad, 0);
-    $("a.cart > span").addClass("counter").text(cantidad);
-}
 
 // Llama a mostrarCarrito() cada vez que se actualiza el carrito
 document.querySelectorAll(".btn-warning, .btn-primary").forEach(boton => {
