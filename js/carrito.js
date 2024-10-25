@@ -54,6 +54,13 @@ function agregarAlCarrito(nombre, precio, imagen) {
     // Guarda el carrito actualizado en el LocalStorage
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    
     // Envía el evento 'add_to_cart' a Google Analytics
     gtag('event', 'add_to_cart', {
         "currency": "PEN", // Moneda en soles
@@ -65,6 +72,8 @@ function agregarAlCarrito(nombre, precio, imagen) {
             "quantity": producto.cantidad
         }]
     });
+
+    gtag("config", "G-VGHCBZG439");
 
     // alert(`${nombre} ha sido agregado al carrito.`);
     mostrarCarrito();
