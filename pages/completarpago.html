@@ -33,43 +33,7 @@
         gtag("config", "G-VGHCBZG439");
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Selecciona el botón de confirmar pedido
-            const botonConfirmar = document.getElementById("confirmar-pedido");
-
-            // Añade el listener para ejecutar finalizarCompra al hacer clic
-            botonConfirmar.addEventListener("click", (e) => {
-                finalizarCompra();
-            });
-        });
-
-        function finalizarCompra() {
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-            if (carrito.length === 0) {
-                console.log("El carrito está vacío.");
-                return;
-            }
-
-            const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-            let totalCompra = carrito.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
-
-            // Envía el evento 'purchase' a Google Analytics
-            gtag('event', 'purchase', {
-                "transaction_id": transactionId,
-                "affiliation": "Mi Tienda de Comidas",
-                "value": totalCompra,
-                "currency": "PEN", // Moneda en soles
-                "items": carrito.map(producto => ({
-                    "id": producto.nombre,
-                    "name": producto.nombre,
-                    "price": producto.precio,
-                    "quantity": producto.cantidad
-                }))
-            });
-        }
-
-
+       
 
 
         document.addEventListener("DOMContentLoaded", function() {
