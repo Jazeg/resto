@@ -30,45 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarContadorCarrito();
 });
 
-function agregarAlCarrito(nombre, precio, imagen) {
-    // Estructura del producto
-    const producto = {
-        nombre,
-        precio: parseFloat(precio),
-        imagen,
-        cantidad: 1
-    };
 
-    // Verifica si ya hay productos en el LocalStorage
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-    // Verifica si el producto ya está en el carrito
-    const index = carrito.findIndex(item => item.nombre === producto.nombre);
-
-    if (index !== -1) {
-        carrito[index].cantidad += 1; // Incrementa la cantidad si ya existe
-    } else {
-        carrito.push(producto); // Agrega el nuevo producto si no existe
-    }
-
-    // Guarda el carrito actualizado en el LocalStorage
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-
-    // Envía el evento 'add_to_cart' a Google Analytics
-    gtag('event', 'add_to_cart', {
-        "currency": "PEN", // Moneda en soles
-        "value": producto.precio,
-        "items": [{
-            "id": producto.nombre,  // Puedes usar otro identificador si tienes
-            "name": producto.nombre,
-            "price": producto.precio,
-            "quantity": producto.cantidad
-        }]
-    });
-
-    // alert(`${nombre} ha sido agregado al carrito.`);
-    mostrarCarrito();
-}
 
 function actualizarContadorCarrito() {
     // Obtiene el carrito del LocalStorage
