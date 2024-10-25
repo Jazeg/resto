@@ -149,7 +149,7 @@
           <button
             type="button"
             class="btn btn-primary btn-block mt-4"
-            id="confirmar-pedido"
+            id="purchase"
           >
             Pagar Ahora
           </button>
@@ -196,11 +196,10 @@
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("purchase").addEventListener("click", function () {
         // Escuchar el click en el botón "Pagar Ahora"
-        const confirmarPedidoBtn = document.getElementById("confirmar-pedido");
         const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-        if (confirmarPedidoBtn) {
+        
           confirmarPedidoBtn.addEventListener("click", function () {
             // Obtiene el carrito del LocalStorage
             const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -231,9 +230,8 @@
               console.log("El carrito está vacío.");
             }
           });
-        } else {
-          console.error('Elemento con id "confirmar-pedido" no encontrado.');
-        }
+        
+        
       });
     </script>
   </body>
