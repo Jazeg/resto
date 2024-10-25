@@ -49,7 +49,7 @@
                 let totalValue = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
 
                 // Enviar el evento de compra
-                gtag('event', 'purchase', {
+                gtag('event', 'purchase2', {
                     "transaction_id":transactionId,  // Aquí podrías generar un ID único para la transacción
                     "currency": "PEN",  // Cambia la moneda si es necesario
                     "value": totalValue,  // Valor total del carrito
