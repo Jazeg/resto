@@ -1,178 +1,252 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Completar Pago</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/completarpago.css"> <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/completarpago.css" />
+    <!-- Estilos personalizados -->
     <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-MSP6QJW7');</script>
-</head>
-<body>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MSP6QJW7");
+    </script>
+  </head>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSP6QJW7"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MSP6QJW7"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VGHCBZG439"
+    ></script>
 
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag("config", "G-VGHCBZG439");
+      gtag("config", "G-VGHCBZG439");
     </script>
-    <script>
-       
 
-
-        document.addEventListener("DOMContentLoaded", function() {
-    // Escuchar el click en el botón "Pagar Ahora"
-    const confirmarPedidoBtn = document.getElementById("confirmar-pedido");
-    const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-    if (confirmarPedidoBtn) {
-        confirmarPedidoBtn.addEventListener("click", function() {
-            // Obtiene el carrito del LocalStorage
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-            if (carrito.length > 0) {
-                let totalValue = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
-
-                // Enviar el evento de compra
-                gtag('event', 'purchase2', {
-                    "transaction_id":transactionId,  // Aquí podrías generar un ID único para la transacción
-                    "currency": "PEN",  // Cambia la moneda si es necesario
-                    "value": totalValue,  // Valor total del carrito
-                    "items": carrito.map(producto => ({
-                        "item_id": producto.nombre,  // ID o nombre del plato
-                        "item_name": producto.nombre,
-                        "price": producto.precio,
-                        "quantity": producto.cantidad
-                    }))
-                });
-
-                // Enviar un evento individual por cada plato
-                carrito.forEach((producto) => {
-                    gtag('event', 'plato_mas_comprado', {
-                        'event_category': 'Productos',
-                        'event_label': producto.nombre,
-                        'value': producto.cantidad,
-                        'price': producto.precio
-                    });
-                });
-
-                console.log("¡Compra registrada y eventos enviados a Google Analytics!");
-            } else {
-                console.log("El carrito está vacío.");
-            }
-        });
-    } else {
-        console.error('Elemento con id "confirmar-pedido" no encontrado.');
-    }
-});
-
-
-
-    </script>
     <div class="container mt-5">
-        <!-- Barra de Progreso de Pasos -->
-        <div class="progress-container mb-4">
-            <ul class="progressbar">
-                <li class="completed">Vistas</li>
-                <li class="completed">Adjuntar</li>
-                <li class="completed">Precios</li>
-                <li class="completed">Detalles</li>
-                <li class="active">Completar Pago</li>
-                <li>Pago Exitoso</li>
-            </ul>
+      <!-- Barra de Progreso de Pasos -->
+      <div class="progress-container mb-4">
+        <ul class="progressbar">
+          <li class="completed">Vistas</li>
+          <li class="completed">Adjuntar</li>
+          <li class="completed">Precios</li>
+          <li class="completed">Detalles</li>
+          <li class="active">Completar Pago</li>
+          <li>Pago Exitoso</li>
+        </ul>
+      </div>
+
+      <h2 class="mb-4 text-center">Pago Seguro</h2>
+
+      <div class="row justify-content-center">
+        <!-- Columna de Detalles de Pago -->
+        <div class="col-md-6">
+          <div class="payment-details p-4 shadow-sm rounded">
+            <h4 class="mb-4">
+              <i class="fas fa-credit-card"></i> Detalles de Pago
+            </h4>
+            <form>
+              <div class="form-group">
+                <label for="numeroTarjeta">Número de Tarjeta</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="numeroTarjeta"
+                  placeholder="1234 5678 9012 3456"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="nombreTarjeta">Nombre en la Tarjeta</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombreTarjeta"
+                  placeholder="Homero Simpson"
+                  disabled
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="fechaExpiracion">Fecha de Expiración</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fechaExpiracion"
+                    placeholder="12/25"
+                    disabled
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="cvv">CVV</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cvv"
+                    placeholder="321"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tipoTarjeta">Tipo de Tarjeta</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tipoTarjeta"
+                  placeholder="Visa"
+                  disabled
+                />
+              </div>
+            </form>
+          </div>
         </div>
 
-        <h2 class="mb-4 text-center">Pago Seguro</h2>
-
-        <div class="row justify-content-center">
-            <!-- Columna de Detalles de Pago -->
-            <div class="col-md-6">
-                <div class="payment-details p-4 shadow-sm rounded">
-                    <h4 class="mb-4"><i class="fas fa-credit-card"></i> Detalles de Pago</h4>
-                    <form>
-                        <div class="form-group">
-                            <label for="numeroTarjeta">Número de Tarjeta</label>
-                            <input type="text" class="form-control" id="numeroTarjeta" placeholder="1234 5678 9012 3456" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="nombreTarjeta">Nombre en la Tarjeta</label>
-                            <input type="text" class="form-control" id="nombreTarjeta" placeholder="Homero Simpson" disabled>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="fechaExpiracion">Fecha de Expiración</label>
-                                <input type="text" class="form-control" id="fechaExpiracion" placeholder="12/25" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="cvv">CVV</label>
-                                <input type="text" class="form-control" id="cvv" placeholder="321" disabled>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="tipoTarjeta">Tipo de Tarjeta</label>
-                            <input type="text" class="form-control" id="tipoTarjeta" placeholder="Visa" disabled>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Columna de Resumen del Pedido -->
-            <div class="col-md-4">
-                <div class="order-summary p-4 shadow-sm rounded">
-                    <h4 class="mb-4"><i class="fas fa-shopping-cart"></i> Resumen de la Compra</h4>
-                    <p class="mb-1"><strong>Sub Total: S/. <span id="subtotal">0.00</span></strong></p>
-                    <p class="mb-2">Envío: <strong>Gratis</strong></p>
-                    <hr>
-                    <p class="mb-1"><strong>Total a Pagar: S/. <span id="total">0.00</span></strong></p>
-                </div>
-                <button type="button" class="btn btn-primary btn-block mt-4" id="confirmar-pedido">Pagar Ahora</button>
-            </div>
+        <!-- Columna de Resumen del Pedido -->
+        <div class="col-md-4">
+          <div class="order-summary p-4 shadow-sm rounded">
+            <h4 class="mb-4">
+              <i class="fas fa-shopping-cart"></i> Resumen de la Compra
+            </h4>
+            <p class="mb-1">
+              <strong>Sub Total: S/. <span id="subtotal">0.00</span></strong>
+            </p>
+            <p class="mb-2">Envío: <strong>Gratis</strong></p>
+            <hr />
+            <p class="mb-1">
+              <strong>Total a Pagar: S/. <span id="total">0.00</span></strong>
+            </p>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary btn-block mt-4"
+            id="confirmar-pedido"
+          >
+            Pagar Ahora
+          </button>
         </div>
+      </div>
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="../js/completarpago.js"></script>
 
     <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <!-- Quick Links -->
-            <div class="col-md-6">
-              <h5>Enlaces Rápidos</h5>
-              <ul class="list-unstyled">
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Política de Privacidad</a></li>
-                <li><a href="#">Términos de Servicio</a></li>
-              </ul>
-            </div>
-            <!-- Contact Information -->
-            <div class="col-md-6 text-md-right">
-              <h5>Contáctanos</h5>
-              <p>Email: <a href="mailto:contacto@rinconcitopiurano.com">contacto@rinconcitopiurano.com</a></p>
-              <p>Teléfono: <a href="tel:+51971391910">+51 987 654 321</a></p>
-            </div>
+      <div class="container">
+        <div class="row">
+          <!-- Quick Links -->
+          <div class="col-md-6">
+            <h5>Enlaces Rápidos</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Política de Privacidad</a></li>
+              <li><a href="#">Términos de Servicio</a></li>
+            </ul>
           </div>
-          <div class="row mt-3">
-            <div class="col text-center">
-              <p class="text-muted">&copy; 2024 Rinconcito Piurano. Todos los derechos reservados. by Zeltux</p>
-            </div>
+          <!-- Contact Information -->
+          <div class="col-md-6 text-md-right">
+            <h5>Contáctanos</h5>
+            <p>
+              Email:
+              <a href="mailto:contacto@rinconcitopiurano.com"
+                >contacto@rinconcitopiurano.com</a
+              >
+            </p>
+            <p>Teléfono: <a href="tel:+51971391910">+51 987 654 321</a></p>
           </div>
         </div>
-      </footer>
-</body>
+        <div class="row mt-3">
+          <div class="col text-center">
+            <p class="text-muted">
+              &copy; 2024 Rinconcito Piurano. Todos los derechos reservados. by
+              Zeltux
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Escuchar el click en el botón "Pagar Ahora"
+        const confirmarPedidoBtn = document.getElementById("confirmar-pedido");
+        const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
+        if (confirmarPedidoBtn) {
+          confirmarPedidoBtn.addEventListener("click", function () {
+            // Obtiene el carrito del LocalStorage
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            if (carrito.length > 0) {
+              let totalValue = carrito.reduce(
+                (total, producto) =>
+                  total + producto.precio * producto.cantidad,
+                0
+              );
+
+              // Enviar el evento de compra
+              gtag("event", "purchase2", {
+                transaction_id: transactionId, // Aquí podrías generar un ID único para la transacción
+                currency: "PEN", // Cambia la moneda si es necesario
+                value: totalValue, // Valor total del carrito
+                items: carrito.map((producto) => ({
+                  item_id: producto.nombre, // ID o nombre del plato
+                  item_name: producto.nombre,
+                  price: producto.precio,
+                  quantity: producto.cantidad,
+                })),
+              });
+
+              // Enviar un evento individual por cada plato
+              carrito.forEach((producto) => {
+                gtag("event", "plato_mas_comprado", {
+                  event_category: "Productos",
+                  event_label: producto.nombre,
+                  value: producto.cantidad,
+                  price: producto.precio,
+                });
+              });
+
+              console.log(
+                "¡Compra registrada y eventos enviados a Google Analytics!"
+              );
+            } else {
+              console.log("El carrito está vacío.");
+            }
+          });
+        } else {
+          console.error('Elemento con id "confirmar-pedido" no encontrado.');
+        }
+      });
+    </script>
+  </body>
 </html>
