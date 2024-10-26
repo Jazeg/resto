@@ -212,7 +212,7 @@ document.querySelectorAll(".btn-warning, .btn-primary").forEach(boton => {
 document
   .getElementById("contactos")
   .addEventListener("click", function () {
-    gtag("event", "click", {
+    gtag("event", "contactanos", {
       event_category: "Botones",
       event_label: "contactanos",
       value: 1,
@@ -220,7 +220,7 @@ document
   });
 
 document.getElementById("reservaciones").addEventListener("click", function () {
-  gtag("event", "click", {
+  gtag("event", "reservaciones", {
     event_category: "Botones",
     event_label: "reservaciones",
     value: 1,
