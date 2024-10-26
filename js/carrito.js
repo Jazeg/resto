@@ -206,3 +206,23 @@ document.querySelectorAll(".btn-warning, .btn-primary").forEach(boton => {
         mostrarCarrito();
     });
 });
+
+
+
+document
+  .getElementById("contactos")
+  .addEventListener("click", function () {
+    gtag("event", "click", {
+      event_category: "Botones",
+      event_label: "contactanos",
+      value: 1,
+    });
+  });
+
+document.getElementById("reservaciones").addEventListener("click", function () {
+  gtag("event", "click", {
+    event_category: "Botones",
+    event_label: "reservaciones",
+    value: 1,
+  });
+});
