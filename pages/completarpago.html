@@ -198,11 +198,10 @@
                 0
               );
 
-              gtag("event", "purchase", {
-                transaction_id: transactionId, // Genera un ID único para la transacción
-                currency: "PEN", // Cambia la moneda si es necesario
-                value: totalValue, // Valor total del carrito (suma de los precios de los productos)
-                items: carrito.map((producto) => ({
+              gtag("event", "view_item_list", {
+                item_list_id: transactionId, // Genera un ID único para la transacción
+                item_list_name: "comidas", // Cambia la moneda si es necesario
+                items:  carrito.map((producto) => ({
                   item_id: producto.nombre, // ID o nombre del plato
                   item_name: producto.nombre, // Nombre del plato
                   price: producto.precio, // Precio del plato
