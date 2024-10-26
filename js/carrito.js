@@ -184,12 +184,10 @@ function agregarAlCarrito(nombre, precio, imagen) {
     gtag('event', 'add_to_cart', {
         "currency": "PEN", // Moneda en soles
         "value": producto.precio,
-        "items": [{
-            "id": producto.nombre,
-            "name": producto.nombre,
-            "price": producto.precio,
-            "quantity": producto.cantidad
-        }]
+        "id": producto.nombre,
+        "name": producto.nombre,
+        "price": producto.precio,
+        "quantity": producto.cantidad
     });
 
     // alert(`${nombre} ha sido agregado al carrito.`);
