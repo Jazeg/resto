@@ -145,12 +145,12 @@ function finalizarCompra() {
     // Envía el evento 'purchase' a Google Analytics
     gtag('event', 'purchase', {
         "transaction_id": transactionId,
-        "affiliation": "Tienda de Comidas",
+        "affiliation": "ceviches",
         "value": totalCompra,
         "currency": "PEN", // Moneda en soles
         "items": carrito.map(producto => ({
-            "id": producto.nombre,  // ID de producto (puedes cambiarlo)
-            "name": producto.nombre,
+            "item_id": producto.nombre,  // ID de producto (puedes cambiarlo)
+            "item_name": producto.nombre,
             "price": producto.precio,
             "quantity": producto.cantidad
         }))
