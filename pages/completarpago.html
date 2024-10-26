@@ -187,7 +187,7 @@
         // Escuchar el click en el botón "Pagar Ahora"
         const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
         
-          confirmarPedidoBtn.addEventListener("click", function () {
+          
             // Obtiene el carrito del LocalStorage
             const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -216,7 +216,7 @@
             } else {
               console.log("El carrito está vacío.");
             }
-          });
+          
         
         
       });
