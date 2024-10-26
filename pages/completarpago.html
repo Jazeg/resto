@@ -12,11 +12,18 @@
     <!-- Estilos personalizados -->
     <link rel="icon" href="../images/piurano-logo.webp" type="image/x-icon" />
 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-MSP6QJW7');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MSP6QJW7");
+    </script>
   </head>
   <!-- Google tag (gtag.js) -->
   <script
@@ -31,13 +38,19 @@
     }
     gtag("js", new Date());
 
-    gtag("config", "G-VGHCBZG439" );
+    gtag("config", "G-VGHCBZG439");
   </script>
   <body>
-     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MSP6QJW7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MSP6QJW7"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div class="container mt-5">
       <!-- Barra de Progreso de Pasos -->
@@ -183,49 +196,54 @@
     </footer>
 
     <script>
-      document.getElementById("purchase").addEventListener("click", function () {
-        // Escuchar el click en el botón "Pagar Ahora"
-        const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
-        
-          
-            // Obtiene el carrito del LocalStorage
-            const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      document
+        .getElementById("purchase")
+        .addEventListener("click", function () {
+          // Escuchar el click en el botón "Pagar Ahora"
+          const transactionId = `T${Date.now()}`; // Genera un ID de transacción único
 
-            if (carrito.length > 0) {
-              let totalValue = carrito.reduce(
-                (total, producto) =>
-                  total + producto.precio * producto.cantidad,
-                0
-              );
+          // Obtiene el carrito del LocalStorage
+          const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-              gtag("event", "view_item_list", {
-                item_list_id: transactionId, // Genera un ID único para la transacción
-                item_list_name: "comidas", // Cambia la moneda si es necesario
-                items:  carrito.map((producto) => ({
-                  item_id: producto.nombre, // ID o nombre del plato
-                  item_name: producto.nombre, // Nombre del plato
-                  price: producto.precio, // Precio del plato
-                  quantity: producto.cantidad, // Cantidad comprada
-                })),
-              });
+          if (carrito.length > 0) {
+            let totalValue = carrito.reduce(
+              (total, producto) => total + producto.precio * producto.cantidad,
+              0
+            );
 
-              console.log(
-                "¡Compra registrada y eventos enviados a Google Analytics!"
-              );
-            } else {
-              console.log("El carrito está vacío.");
-            }
-          
-        
-        
-      });
+            gtag("event", "purchase", {
+              transaction_id: transactionId,
+              value: totalValue,
+              tax: 0.0,
+              shipping: 0.0,
+              currency: "PEN",
+              coupon: "no",
+              items: carrito.map((producto) => ({
+                item_id: producto.nombre, // ID o nombre del plato
+                item_name: producto.nombre, // Nombre del plato
+                price: producto.precio, // Precio del plato
+                quantity: producto.cantidad, // Cantidad comprada
+              })),
+            });
 
+            gtag("event", "view_item_list", {
+              item_list_id: transactionId, // Genera un ID único para la transacción
+              item_list_name: "comidas", // Cambia la moneda si es necesario
+              items: carrito.map((producto) => ({
+                item_id: producto.nombre, // ID o nombre del plato
+                item_name: producto.nombre, // Nombre del plato
+                price: producto.precio, // Precio del plato
+                quantity: producto.cantidad, // Cantidad comprada
+              })),
+            });
 
-
-
-
-      
+            console.log(
+              "¡Compra registrada y eventos enviados a Google Analytics!"
+            );
+          } else {
+            console.log("El carrito está vacío.");
+          }
+        });
     </script>
-    
   </body>
 </html>
